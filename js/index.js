@@ -2,10 +2,13 @@ let age = prompt("How old are u?");
 if(age) {
     let ageMessage = `You are ${age} years old`;
     console.log(ageMessage);
+    
 } else {
     let ageMessage = `So sad, you did not put your age`;
     console.log(ageMessage);
 }
+
+
 
 let city = prompt("In which city are u living now?");
 if(city === "Kyiv") {
@@ -24,6 +27,8 @@ if(city === "Kyiv") {
     let cityMessage = `So sad, you did not put your city`;
     console.log(cityMessage);
 }
+
+
 let sport = prompt("What's your favourite kind of sport?");
 if(sport === "football") {
     let sportMessage = `Wanna be like Ronaldo?`;
@@ -173,5 +178,14 @@ if(city === "Null" && age === "Null" ||  sport === "football") {
 
 
 
-
+/*switch(age) {
+    case age: 
+    let ageMessage = `You are ${age} years old`;
+    break;
+    case '': 
+    alert(`So sad, you did not put your age`);
+    break;
+    case Null:
+    alert(`So sad, you did not put your age`);   
+}*/
 
