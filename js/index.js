@@ -10,9 +10,11 @@ switch(numOrStr) {
     case '':
         console.log('Empty String');
     break;
-    case  !isNaN(numOrStr) || numOrStr:
+    case  isNaN(+numOrStr):
     console.log('number is Ba_NaN');
      break;
      default:
     console.log('OK!');
 }
+
+
