@@ -1,53 +1,58 @@
 let age = prompt("How old are u?");
 if(age) {
-    let ageMessage = `You are ${age} years old`;
-    console.log(ageMessage);
-    
+    Message1 = `You are ${age} years old`;
+    console.log(Message1);
 } else {
-    let ageMessage = `So sad, you did not put your age`;
-    console.log(ageMessage);
+    Message1 = `So sad, you did not put your age`;
+    console.log(Message1);
 }
 
 
-
 let city = prompt("In which city are u living now?");
-if(city === "Kyiv") {
-    let cityMessage = `You are living in the capital of Ukraine`;
-    console.log(cityMessage);
-} if(city === "Washington") {
-    let cityMessage = `You are living in the capital of USA`;
-    console.log(cityMessage);
-} if(city === "London") {
-    let cityMessage = `You are living in the capital of GB`;
-    console.log(cityMessage);
-} if(city) {
-    let cityMessage = `You are living in the ${city}`;
-    console.log(cityMessage);
+  if(city === "Kyiv") {
+    Message2 = `You are living in the capital of Ukraine`;
+    console.log(Message2);
+} else if(city ==="Washington") {
+    Message2 = `You are living in the capital of USA`;
+    console.log(Message2);
+} else if(city === "London") {
+    Message2 = `You are living in the capital of GB`;
+    console.log(Message2);
+}  else if(city === '') {
+        Message2 = `So sad, you did not put your city`;
+        console.log(Message2);
+} else if(city === null) {
+    Message2 = `So sad, you did not put your city`;
+    console.log(Message2);
 } else {
-    let cityMessage = `So sad, you did not put your city`;
-    console.log(cityMessage);
+    Message2 = `You are living in the ${city}`;
+    console.log(Message2);
 }
 
 
 let sport = prompt("What's your favourite kind of sport?");
 if(sport === "football") {
-    let sportMessage = `Wanna be like Ronaldo?`;
-    console.log(sportMessage);
-} if(sport === "big tennis") {
-    let sportMessage = `Wanna be like Federer?`;
-    console.log(sportMessage);
-} if(sport === "box") {
-    let sportMessage = `Wanna be like Usik?`;
-    console.log(sportMessage);
-} if(sport) {
-    let sportMessage = `It is greate!`;
-    console.log(sportMessage);
+    Message3 = `Wanna be like Ronaldo?`;
+    console.log(Message3);
+} else if(sport === "big tennis") {
+    Message3 = `Wanna be like Federer?`;
+    console.log(Message3);
+} else if(sport === "box") {
+    Message3 = `Wanna be like Usik?`;
+    console.log(Message3);
+} else if(sport === '') {
+    Message3 = `So sad, you did not put your favourite sport`;
+    console.log(Message3);
+}    else if(sport === null) {
+        Message3 = `So sad, you did not put your favourite sport`;
+        console.log(Message3);
+  
 } else {
-    let sportMessage = `So sad, you did not put your favourite sport`;
-    console.log(sportMessage);
+    Message3 = `${sport} is greate sport!`;
+    console.log(Message3);
 }
 
-let answer = `${ageMessage} ${cityMessage} ${sportMessage}`;
+let answer = `${Message1}; ${Message2}; ${Message3}`;
 console.log(answer);
 alert(answer)
 
