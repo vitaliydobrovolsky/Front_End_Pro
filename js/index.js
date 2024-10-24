@@ -1,10 +1,52 @@
 let age = prompt("How old are u?");
+if(age) {
+    let ageMessage = `You are ${age} years old`;
+    console.log(ageMessage);
+} else {
+    let ageMessage = `So sad, you did not put your age`;
+    console.log(ageMessage);
+}
+
 let city = prompt("In which city are u living now?");
+if(city === "Kyiv") {
+    let cityMessage = `You are living in the capital of Ukraine`;
+    console.log(cityMessage);
+} if(city === "Washington") {
+    let cityMessage = `You are living in the capital of USA`;
+    console.log(cityMessage);
+} if(city === "London") {
+    let cityMessage = `You are living in the capital of GB`;
+    console.log(cityMessage);
+} if(city) {
+    let cityMessage = `You are living in the ${city}`;
+    console.log(cityMessage);
+} else {
+    let cityMessage = `So sad, you did not put your city`;
+    console.log(cityMessage);
+}
 let sport = prompt("What's your favourite kind of sport?");
+if(sport === "football") {
+    let sportMessage = `Wanna be like Ronaldo?`;
+    console.log(sportMessage);
+} if(sport === "big tennis") {
+    let sportMessage = `Wanna be like Federer?`;
+    console.log(sportMessage);
+} if(sport === "box") {
+    let sportMessage = `Wanna be like Usik?`;
+    console.log(sportMessage);
+} if(sport) {
+    let sportMessage = `It is greate!`;
+    console.log(sportMessage);
+} else {
+    let sportMessage = `So sad, you did not put your favourite sport`;
+    console.log(sportMessage);
+}
 
+let answer = `${ageMessage} ${cityMessage} ${sportMessage}`;
+console.log(answer);
+alert(answer)
 
-
-   if(age && city === "Kiyv" && sport === "football") {
+  /* if(age && city === "Kiyv" && sport === "football") {
     alert(`You are ${age} years old, living in the capital of Ukraine & wanna be like Ronaldo?`);
     //console.log(message2);
 } if(age && city === "Washington" && sport === "football") {
@@ -126,7 +168,7 @@ if(city === "Null" && age === "Null" ||  sport === "football") {
 
    else {
     alert(`So sad, you did not input all your informatio, as age, city & favourite sport.`);
-} 
+} */
 
 
 
