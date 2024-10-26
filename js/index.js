@@ -1,12 +1,21 @@
-let wholeNum = prompt(`ввести ціле число`);
-/*for(let i = wholeNum; i >= wholeNum;) {
-    for(let j= 2; j< i; j++) {
-    if(i%j ==0) {
-    console.log(`${wholeNum} is not a prime number`);
-    }   
-    console.log(`${wholeNum} is a prime number`);
-       }
-}*/
+let Num = prompt(`ввести ціле число`);
+let a = Num;
+
+for (j = 2; j < 3; j++) {
+  for (let i = 2; i < a; i++) {
+    if (a % i == 0) {
+    console.log(`${Num} is not a prime number`);
+     
+    }
+  }
+    if (a % j != 0 && a % 3 != 0)  {
+    console.log(`${Num} is a prime number`);
+    
+    } break;
+
+}
+
+
 /*let i = 1;
 while(i >= wholeNum) {
     if(wholeNum % (i++) === 0)
@@ -14,7 +23,7 @@ while(i >= wholeNum) {
     i++
 }*/
 
-for(i=2; i<=wholeNum; i++){
+/*for(i=2; i<=wholeNum; i++){
     if(wholeNum % i !== 0){
     console.log(" Prime ")
     }
@@ -22,5 +31,5 @@ for(i=2; i<=wholeNum; i++){
         console.log("not prime")
        } 
          
-}
+}*/
   
