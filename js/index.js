@@ -1,4 +1,4 @@
-let array = ["hello", 12, "/", 23, 1, "pp", "buy", 52, 41, 2, "!!"];
+let array = ["hello", 12, "/", 23, 1, "pp", "buy", 52, 41, 2, "!!", 0, 0];
 
 let finalArray = 0;
 let element = 0;
@@ -6,7 +6,7 @@ let array2 = [];
 
 function arithMean() {
     for(i = 0; i < array.length; i++) {
-        if(+array[i]) {
+        if(array[i] >= 0) {
            let n = +array[i];
           
             finalArray += n;
