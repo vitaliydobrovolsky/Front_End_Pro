@@ -1,13 +1,14 @@
 let info = prompt(`Enter any kind of phrase`);
-let letter1 = prompt(`Enter 1st letter to be remove from phrase you entered`);
-let letter2 = prompt(`Enter 2nd letters to be remove from phrase you entered`);
-let infoFinal = ''
+let letter = prompt(`Enter 2 letters, which you want to remove from phrase  entered`);
 
+let infoFinal = ''
+let a = letter[0];
+let b = letter[1];
 function phrase(deletion) {
     
     for(i=0; i < info.length; i++) {
         console.log(info.length);
-        if(info[i] !== letter1 && info[i] !== letter2) {
+        if(info[i] !== a && info[i] !== b) {
           infoFinal += info[i];
         }   
       }
