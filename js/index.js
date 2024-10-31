@@ -1,9 +1,9 @@
-let info = prompt(`Enter any kind of phrase`);
-let letter = prompt(`Enter 2 letters, which you want to remove from phrase  entered`);
-let infoFinal = ''
+//let info = prompt(`Enter any kind of phrase`);
+//let letter = prompt(`Enter 2 letters, which you want to remove from phrase  entered`);
+//let infoFinal = ''
 
 
-function phrase(deletion) {
+function phrase(info = prompt(`Enter any kind of phrase`), letter = prompt(`Enter 2 letters, which you want to remove from phrase  entered`)) {
 
   for(k=0; k < letter.length; k++) { 
     let a = letter[k]; 
