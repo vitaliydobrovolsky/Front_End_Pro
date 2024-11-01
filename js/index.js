@@ -1,7 +1,9 @@
-let array = [1, 10, 105, 8, 0, 7, 6, 8]
+const array = [1, 10, 105, 8, 0, 7, 6, 8]
 let array2 = [];
+from = confirm(`You have an array [${array}]`);
+item = +prompt(`Pease add numbers, which you want to remove from array`);
 
-function removeElement(conf = confirm(`You have an array [${array}]`), item = +prompt(`Pease add numbers, which you want to remove from array`)) {
+function removeElement(array, item) {
      finalArray = '';
      for(i = 0; i < array.length; i++) {
         if(array[i] !== item) {
@@ -10,10 +12,10 @@ function removeElement(conf = confirm(`You have an array [${array}]`), item = +p
             array2.push([n]);
            }
       }
-   
-    alert(array2)
+           console.log(array)
+           alert(array2)
 }
-removeElement()
+removeElement(array, item)
 
 
 
