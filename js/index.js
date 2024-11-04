@@ -5,12 +5,12 @@ function expr(info) {
 
 for(i = 0; i < 9; i++ ) {
    
-       if (info <= 100 &&  Number) { 
+       if (info <= 100) { 
         info = prompt(`Please enter number more than 100`);
-       } else if (typeof info !== Number) {
+       } else if (isNaN(info)) {
        // console.log(`You entered ${info}`); break;
        // alert(`You entered ${info}`); break;
-       } else if (info > 100 &&  Number ) {
+       } else if (info > 100) {
         //console.log(`You entered ${info}`); break;
       //  alert(`You entered ${info}`); break;
        } 
