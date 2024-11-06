@@ -1,12 +1,24 @@
+
+
 let ladder = {
-    up: function () { // підніматиме вас на одну сходинку
+    step: 0,
+    up: function() {
+      this.step++;
+      return this;
     },
-    down: function () { // опускатиме вас на одну сходинку
+    down: function() {
+      this.step--;
+      return this;
     },
-    showStep: function () { // показує поточну сходинку
+    showStep: function() { 
+      alert( this.step );
+      return this;
     }
   };
 
-  ladder.showStep()
+//ladder.up();
+//ladder.up();
+//ladder.down();
+//ladder.showStep();
 
-  console.log(showStep)
+ladder.up().up().down().showStep();
