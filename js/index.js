@@ -5,4 +5,8 @@ const person = {
     livingPlace: 'London'
   };
 
-  console.log('user:' + person.firstName, person.lastName, person.age + 'years old', 'live in:' + person.livingPlace); 
+  //console.log('user:' + person.firstName, person.lastName, person.age + 'years old', 'live in:' + person.livingPlace); 
+
+
+  const userInfo = Object.entries(person);
+  console.log(userInfo)
