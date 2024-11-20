@@ -3,3 +3,14 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+
+#parent {
+  height: 150px;
+  width: 220px;
+  background-color: aquamarine;
+}
+
+#parent button {
+  margin: 25px;
+}
