@@ -7,16 +7,16 @@
     <title>Home Work 12.3</title>
 </head>
 <body>
-    <h2>ДЗ 12.3. TODO лист/h2>
+    <h2>ДЗ 12.3. TODO лист</h2>
     <br>
     <p>Створіть HTML-сторінку, яка містить список завдань (to-do list) з можливістю додавання нових завдань. Ваше ціль - використовуючи делегування подій, створити обробник подій для списку завдань, який дозволить видаляти завдання при кліку на них.</p>
      <br>
      <br>
     <div id="div">
         <ul id="ul">
-            <li class="ul_li">Task 1 <button>Delete</button></li>
-            <li class="ul_li">Task 2 <button>Delete</button></li>
-            <li class="ul_li">Task 3 <button>Delete</button></li>
+            <li id="ul_li">Task 1 <button onclick="deleteNode(this)">Delete</button></li>
+            <li id="ul_li">Task 2 <button onclick="deleteNode(this)">Delete</button></li>
+            <li id="ul_li">Task 3 <button onclick="deleteNode(this)">Delete</button></li>
             
         </ul>
         <div id="addtask"> 
