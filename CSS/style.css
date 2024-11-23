@@ -7,7 +7,7 @@
 
 .div {
   border-radius: 15px;
-  height: 280px;
+  height: 350px;
   width: 240px;
   margin: 25px;
   background-color: bisque;
@@ -40,6 +40,25 @@
   color: brown;
 }
 
+
+#div_p1, #div_p2, #div_p3, #div_p4 {
+  background-color: yellow;
+  width: 170px;
+  margin-left: 32px ;
+  border:solid 1px;
+ visibility: hidden;
+  
+}
+
+
+.p3 {
+  padding-left: 15px;
+  color: red;
+  font-size: 10px;
+  
+  
+}
+
 button {
-  margin: 10px 90px;
+  margin: 10px 70px;
 }
