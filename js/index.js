@@ -60,6 +60,7 @@ function Validate() {
 
 Validate()
 console.log(values)
+form.reset();
 })
 
 
