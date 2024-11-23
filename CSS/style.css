@@ -3,3 +3,31 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+
+.div {
+  border-radius: 15px;
+  height: 250px;
+  width: 240px;
+  margin: 25px;
+  background-color: bisque;
+}
+
+#name {
+  margin-top: 30px;
+}
+
+ input {
+  margin: 5px 30px;
+}
+
+p {
+  margin: 16px 13px;
+  font-weight: bolder;
+  font-size: 15px;
+  color: brown;
+}
+
+button {
+  margin: 10px 90px;
+}
