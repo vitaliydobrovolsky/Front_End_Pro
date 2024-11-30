@@ -43,33 +43,5 @@ function showSlides(n) {
 
 
 
-let container = document.getElementsByClassName('slideshow-container')
-
-/*let checkScroll = function() {
-    if (container.scrollLeft <= 0)
-      prev.classList.add("disabled");
-    else
-      prev.classList.remove("disabled");
-  
-    if (container.scrollLeft >= 360)
-      next.classList.add("disabled");
-    else
-      next.classList.remove("disabled");
-  }
-  
-  checkScroll();
-  
-  prev.addEventListener('click', function() {
-    container.scrollLeft -= 90;
-  
-    checkScroll();
-  })
-  
-  next.addEventListener('click', function() {
-    container.scrollLeft += 90;
-    checkScroll();
-  })*/
-
-
 
 
