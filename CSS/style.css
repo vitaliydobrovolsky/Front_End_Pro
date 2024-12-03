@@ -3,3 +3,14 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+
+#table{
+  border: solid 1px;
+}
+
+td, th {
+  padding: 15px;
+  border: solid 1px;
+}
+
