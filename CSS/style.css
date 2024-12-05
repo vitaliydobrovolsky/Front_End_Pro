@@ -11,10 +11,7 @@ div {
   background: #66deb2;
 }
 
-button:hover {
-  cursor: pointer;
-  background-color: #73E831;
-}
+
 ul {
   list-style-type: none; 
 }
