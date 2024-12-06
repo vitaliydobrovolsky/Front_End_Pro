@@ -50,6 +50,7 @@
   
 }
 
+
 #div_p1, #div_p2, #div_p3, #div_p4 {
   background-color: yellow;
   width: 170px;
@@ -59,6 +60,7 @@
   visibility: hidden;
   
 }
+
 
 .p3 {
   padding-left: 15px;
