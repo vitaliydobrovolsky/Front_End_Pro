@@ -1,23 +1,21 @@
 class Calculator {
-    constructor() {
-    this.result = 0;
-      }
+    
 
     add(a, b){
-        return  this.result = a + b
+        return   a + b
          
          
     }
     subtract(a, b) {
-        return this.result = a - b
+        return   a - b
          
     }
     divide(a, b) {
-        return this.result = a / b
+        return  a / b
          
     }
     multiply(a, b) {
-        return this.result = a * b         
+        return  a * b         
     }
 }
 
