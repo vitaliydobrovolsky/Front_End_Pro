@@ -1,5 +1,5 @@
 
-const parent = document.getElementById('ul');
+/*const parent = document.getElementById('ul');
 const addElem = document.getElementById('btn')
 const ul = document.getElementById('ul')
 const input = document.getElementById('mytask');
@@ -25,24 +25,57 @@ addElem.addEventListener('click', (event) => {
 });
 function deleteNode(item){
     item.parentNode.remove()
-}
+}*/
+
+$(document).ready(function() {
+    //const $parent = $('#ul');
+    const $addElem = $('#btn');
+    const $input = $('#mytask');
+    const $ul = $('#ul');
+
+    $addElem.on('click', function() {
+        // Create new elements
+        const $li = $('<li>').attr('id', 'ul_li');
+        const $newButton = $('<button>').text('Delete').on('click', function() {
+            deleteNode($(this));
+        });
+        const $par = $('<p>').text($input.val()).on('click', function() {
+            showModal();
+        });
+
+        // Append the new elements
+        $li.append($par).append($newButton);
+        $ul.append($li);
+    });
+
+    // Function to delete a node
+    function deleteNode($item) {
+        $item.closest('li').remove();
+    }
+
+    
+});
 
 
 
 let modal = new bootstrap.Modal(document.getElementById('gfg'));
 function showModal() {
 modal.show();
-
+$('#modal_par').append(`text`);
+$('#modalText').text("Текст завдання: " + task);
 }
 
 
 
-
 $(document).ready(function(){
-    $("#ul_li").click(function(){
+    $("#ul").children("").click(function(){
         
     })
 })
+
+
+
+
 
 
 
