@@ -6,4 +6,14 @@
 
 div {
   margin: 45px;
+  max-width: 400px;
 }
+
+
+
+#ul_li {
+  display: flex;
+  justify-content: space-between;
+}
+
+
