@@ -24,28 +24,9 @@ function deleteNode(item){
     item.parentNode.remove()
 }
 
-
-
-
-
-
-//parent.addEventListener('click', (event) => {
-  //if( event.target.textContent === 'Delete' ) {
-  //     for (let i = 0; i <li.length; i++){
-             /*li[i].querySelector("button").addEventListener("click", function(){
-             this.closest("li").remove();
-             });        */
-            /* if (ul.hasChildNodes()) {
-                ul.removeChild(ul.children[i]);
-              }   break;*/
-             
-      //     } 
-      //     console.log(li.length)
-         
-   // console.log(event.target.textContent)
-   //    }
-    
-//});
+$(document).ready(function(){
+    $(".ul_li")
+})
 
 
 
@@ -55,12 +36,3 @@ function deleteNode(item){
 
 
 
-  /*for (let i = 0; i <li.length; i++){
-      li[i].addEventListener("click", function(){
-         this.classList.toggle("active");
-      });
-    li[i].querySelector("button").addEventListener("click", function(){
-         this.closest("li").remove();
-      });
-    }*/
-   
