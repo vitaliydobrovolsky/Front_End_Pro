@@ -4,8 +4,8 @@ $(document).ready(function () {
         const taskText = $('#taskInput').val().trim();
         if (taskText) {
             $('#taskList').append(
-                `<li class="list-group-item d-flex justify-content-between align-items-center" data-task="${taskText}">
-                    ${taskText}
+                `<li class="list-group-item d-flex justify-content-between align-items-center" >
+                   <span data-task="${taskText}">${taskText}</span>
                     <button class="btn btn-danger btn-sm deleteTaskBtn">Видалити</button>
                 </li>`
             );
@@ -19,7 +19,7 @@ $(document).ready(function () {
     });
 
     
-    $('#taskList').on('click', 'li', function () {
+    $('#taskList').on('click', 'span', function () {
         const taskContent = $(this).data('task');
         $('#modalTaskContent').text(taskContent); 
         $('#taskModal').modal('show'); 
