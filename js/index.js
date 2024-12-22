@@ -5,7 +5,7 @@ $(document).ready(function () {
         if (taskText) {
             $('#taskList').append(
                 `<li class="list-group-item d-flex justify-content-between align-items-center" data-task="${taskText}">
-                   <span> ${taskText}</span>
+                    ${taskText}
                     <button class="btn btn-danger btn-sm deleteTaskBtn">Видалити</button>
                 </li>`
             );
@@ -19,7 +19,7 @@ $(document).ready(function () {
     });
 
     
-    $('#taskList').on('click', 'span', function () {
+    $('#taskList').on('click', 'li', function () {
         const taskContent = $(this).data('task');
         $('#modalTaskContent').text(taskContent); 
         $('#taskModal').modal('show'); 
