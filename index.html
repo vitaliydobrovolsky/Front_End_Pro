@@ -11,7 +11,18 @@
     <br>
     <p></p>
 
-
+    <div class="container">
+        <h1>Отримати інформацію від SWAPI</h1>
+        <form id="swapi-form">
+          <input type="text" id="api-url" placeholder="Введіть URL API" required>
+          <input type="text" id="endpoint" placeholder="Введіть ендпоінт" required>
+          <button type="submit">Отримати</button>
+        </form>
+    
+        <div id="loader" class="loader" style="display:none;">Завантаження...</div>
+        
+        <pre id="result"></pre>
+      </div>
 
     
     <script src="./js/index.js"></script>
