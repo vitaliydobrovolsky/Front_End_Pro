@@ -10,6 +10,34 @@
     <h2>ДЗ 21.1. babel</h2>
     <br>
     <p>Оптимізувати минуле ДЗ із використанням babel</p>
+    <div class="container mt-5">
+        <h2>TODO List</h2>
+        
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" id="taskInput" placeholder="Введіть нове завдання">
+            <button class="btn btn-primary" id="addTaskBtn">Додати завдання</button>
+        </div>
+        
+        <ul class="list-group" id="taskList">
+        </ul>
+        
+        <div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="taskModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="taskModalLabel">Завдання</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modalTaskContent">
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     
     <script src="./js/index.js"></script>
