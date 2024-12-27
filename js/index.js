@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Додавання задачі
+    
     const addTaskBtn = document.querySelector('#addTaskBtn');
     const taskInput = document.querySelector('#taskInput');
     const taskList = document.querySelector('#taskList');
@@ -14,18 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     <button class="btn btn-danger btn-sm deleteTaskBtn">Видалити</button>
                 </li>
             `);
-            taskInput.value = ''; // Очищення поля вводу
+            taskInput.value = ''; 
         }
     });
 
-    // Видалення задачі
     taskList.addEventListener('click', (event) => {
         if (event.target.classList.contains('deleteTaskBtn')) {
             event.target.closest('li').remove();
         }
     });
 
-    // Відображення модального вікна з описом задачі
+    
     taskList.addEventListener('click', (event) => {
         if (event.target.tagName === 'SPAN') {
             const taskContent = event.target.dataset.task;
