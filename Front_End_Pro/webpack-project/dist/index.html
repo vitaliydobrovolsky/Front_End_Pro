@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">  
+    <title>Home Work 13.1</title>
+</head>
+<body>
+    <h2>ДЗ 13.1. Валідація з RegEx..</h2>
+    <br>
+    <p>Доробити валідацію для надсилання повідомлення з використанням регулярних виразів:</p>
+    <br>
+    <br>
+    <div class="div">
+
+         <form action="/server-enpoint" method="get" id="form">
+               <p class="p1">We would like to help you</p>
+               <input type="text" name="name" placeholder="Name" id="name">
+               <div id="div_p1">
+               <p class="p3">Error: Name field cannot be empty</p>
+               </div>
+               <input type="text" name="message" placeholder="Message" id="message">
+               <div id="div_p2">
+                <p class="p3">Error: min 5 characters required</p>
+                </div>
+               <p class="p2">HOW TO UNSWER TO YOU</p>
+               <input type="text" name="phone" id="phone" placeholder="Phone number">
+               <div id="div_p3">
+                <p class="p3">Error: Please enter correct format of phone number</p>
+                </div>
+               <input type="email" name="email" placeholder="Email" id="email">
+               <div id="div_p4">
+                <p class="p3">Error: Your email format is invalid, please input correct foramt</p>
+                </div>
+               <button type="submit">Send message</button>
+         </form>
+    </div>
+    <script src="../src/index.js"></script>
+</body>
+</html>
