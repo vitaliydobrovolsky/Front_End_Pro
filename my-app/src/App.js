@@ -1,41 +1,61 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import './index.css';
 
-function App() {
+const App = () => {
+  const [votes, setVotes] = useState(() => {
+    const savedVotes = localStorage.getItem('votes');
+    return savedVotes ? JSON.parse(savedVotes) : { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+  });
+
+  useEffect(() => {
+    localStorage.setItem('votes', JSON.stringify(votes));
+  }, [votes]);
+
+  const handleVote = (id) => {
+    setVotes((prevVotes) => ({ ...prevVotes, [id]: prevVotes[id] + 1 }));
+  };
+
+  const showResults = () => {
+    let maxVotes = 0;
+    let winnerId = null;
+    for (let id in votes) {
+      if (votes[id] > maxVotes) {
+        maxVotes = votes[id];
+        winnerId = id;
+      }
+    }
+    return { winnerId, maxVotes };
+  };
+
+  const clearResults = () => {
+    setVotes({ 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 });
+    localStorage.removeItem('votes');
+  };
+
+  const { winnerId, maxVotes } = showResults();
+
   return (
-    <div className="container mt-5 text-center">
-      
-      <header className="mb-4">
-        <h1 className="display-4">SWAPI</h1>
-        <p className="lead">The Star Wars API</p>
-        <p className="text-muted">(what happened to swapi.co?)</p>
-      </header>
-
-      
-      <div className="mb-4">
-        <div className="input-group">
-          <span className="input-group-text">https://swapi.dev/api/</span>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="people/1/"
-            aria-label="SWAPI Query"
-          />
-          <button className="btn btn-primary">Request</button>
-        </div>
-        <p className="mt-2 text-muted">Need a hint? Try <code>people/1/</code> or <code>planets/3/</code> or <code>starships/9/</code></p>
+    <div className="App">
+      <h1>Голосування за найкращий смайлик</h1>
+      <div className="emoji-container">
+        {Object.entries(votes).map(([id, count]) => (
+          <div key={id} className="emoji" onClick={() => handleVote(id)}>
+            <span role="img" aria-label={`emoji-${id}`} className="emoji-icon">
+              {['😀', '😊', '😎', '🤩', '😍'][id - 1]}
+            </span>
+            <span className="emoji-count">{count}</span>
+          </div>
+        ))}
       </div>
-
-      
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">Response</h5>
-          <p className="card-text">Response data will appear here...</p>
-        </div>
-      </div>
+      <button className="button" onClick={() => alert(`Переможець: ${['😀', '😊', '😎', '🤩', '😍'][winnerId - 1]} (Кількість голосів: ${maxVotes})`)}>
+        Show Results
+      </button>
+      <button className="button" onClick={clearResults}>Очистити результати</button>
     </div>
   );
-}
+};
+
+
 
 export default App;
+
