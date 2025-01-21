@@ -1,6 +1,6 @@
-// App.js
+
 import React, { Component } from 'react';
-import './App.css';
+import './index.css';
 
 class App extends Component {
   constructor(props) {
@@ -40,7 +40,7 @@ class App extends Component {
     this.setState({
       votes: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 },
     });
-    localStorage.removeItem('votes');
+    
   };
 
   render() {
