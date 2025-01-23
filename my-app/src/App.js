@@ -1,41 +1,94 @@
-import logo from './logo.svg';
-import './App.css';
-import './index.css';
 
-function App() {
+import React, { useState } from 'react';
+import './index.css'; 
+
+
+function Square({ value, onClick }) {
   return (
-    <div className="container mt-5 text-center">
-      
-      <header className="mb-4">
-        <h1 className="display-4">SWAPI</h1>
-        <p className="lead">The Star Wars API</p>
-        <p className="text-muted">(what happened to swapi.co?)</p>
-      </header>
+    <button className="square" onClick={onClick}>
+      {value}
+    </button>
+  );
+}
 
-      
-      <div className="mb-4">
-        <div className="input-group">
-          <span className="input-group-text">https://swapi.dev/api/</span>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="people/1/"
-            aria-label="SWAPI Query"
-          />
-          <button className="btn btn-primary">Request</button>
-        </div>
-        <p className="mt-2 text-muted">Need a hint? Try <code>people/1/</code> or <code>planets/3/</code> or <code>starships/9/</code></p>
+
+function Board() {
+  const [squares, setSquares] = useState(Array(9).fill(null));
+  const [isXNext, setIsXNext] = useState(true);
+
+  
+  const calculateWinner = (squares) => {
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+
+    for (let i = 0; i < lines.length; i++) {
+      const [a, b, c] = lines[i];
+      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+        return squares[a];
+      }
+    }
+    return null;
+  };
+
+  const winner = calculateWinner(squares);
+  const status = winner ? `Winner: ${winner}` : `Next player: ${isXNext ? 'X' : 'O'}`;
+
+  const handleClick = (i) => {
+    if (squares[i] || winner) return;
+    const newSquares = squares.slice();
+    newSquares[i] = isXNext ? 'X' : 'O';
+    setSquares(newSquares);
+    setIsXNext(!isXNext);
+  };
+
+  const handleReset = () => {
+    setSquares(Array(9).fill(null));
+    setIsXNext(true);
+  };
+
+  const renderSquare = (i) => {
+    return <Square value={squares[i]} onClick={() => handleClick(i)} />;
+  };
+
+  return (
+    <div>
+      <div className="status">{status}</div>
+      <div className="board-row">
+        {renderSquare(0)}
+        {renderSquare(1)}
+        {renderSquare(2)}
       </div>
+      <div className="board-row">
+        {renderSquare(3)}
+        {renderSquare(4)}
+        {renderSquare(5)}
+      </div>
+      <div className="board-row">
+        {renderSquare(6)}
+        {renderSquare(7)}
+        {renderSquare(8)}
+      </div>
+      <button className="reset-button" onClick={handleReset}>Reset Game</button>
+    </div>
+  );
+}
 
-      
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">Response</h5>
-          <p className="card-text">Response data will appear here...</p>
-        </div>
+function Game() {
+  return (
+    <div className="game">
+      <div className="game-board">
+        <Board />
       </div>
     </div>
   );
 }
 
-export default App;
+export default Game;
