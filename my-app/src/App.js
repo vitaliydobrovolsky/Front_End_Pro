@@ -1,41 +1,168 @@
-import logo from './logo.svg';
-import './App.css';
-import './index.css';
+import React, { useState } from "react";
 
-function App() {
+import { Form as FinalForm, Field } from "react-final-form";
+import { Formik, Form as FormikForm, Field as FormikField, ErrorMessage } from "formik";
+import "./index.css";
+
+export default function TodoApp() {
   return (
-    <div className="container mt-5 text-center">
-      
-      <header className="mb-4">
-        <h1 className="display-4">SWAPI</h1>
-        <p className="lead">The Star Wars API</p>
-        <p className="text-muted">(what happened to swapi.co?)</p>
-      </header>
+    <div className="todo-container">
+      <h1>TODO</h1>
+      <ControlledTodo />
+      <hr />
+      <h1>TODO (React-final-form)</h1>
+      <FinalFormTodo />
+      <hr />
+      <h1>TODO (Formik)</h1>
+      <FormikTodo />
+    </div>
+  );
+}
 
-      
-      <div className="mb-4">
-        <div className="input-group">
-          <span className="input-group-text">https://swapi.dev/api/</span>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="people/1/"
-            aria-label="SWAPI Query"
-          />
-          <button className="btn btn-primary">Request</button>
-        </div>
-        <p className="mt-2 text-muted">Need a hint? Try <code>people/1/</code> or <code>planets/3/</code> or <code>starships/9/</code></p>
-      </div>
 
-      
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">Response</h5>
-          <p className="card-text">Response data will appear here...</p>
-        </div>
+function ControlledTodo() {
+  const [todos, setTodos] = useState([]);
+  const [input, setInput] = useState("");
+
+  const addTodo = () => {
+    if (input.length >= 5) {
+      setTodos([...todos, input]);
+      setInput("");
+    } else {
+      alert("Введіть не менше 5 символів");
+    }
+  };
+
+  const removeTodo = (index) => {
+    setTodos(todos.filter((_, i) => i !== index));
+  };
+
+  return (
+    <div className="todo-section">
+      <input
+        type="text"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="Введіть завдання"
+      />
+      <button onClick={addTodo}>Додати</button>
+      <div className="todos">
+        {todos.map((todo, index) => (
+          <div key={index} className="todo-item">
+            <input type="checkbox" /> {todo}
+            <button onClick={() => removeTodo(index)}>Видалити</button>
+          </div>
+        ))}
       </div>
     </div>
   );
 }
 
-export default App;
+
+function FinalFormTodo() {
+  const [todos, setTodos] = useState([]);
+
+  const onSubmit = (values) => {
+    setTodos([...todos, values.todo]);
+  };
+  
+  const validate = (values) => {
+    const errors = {};
+    if (!values.todo || values.todo.length < 5) {
+      errors.todo = "Введіть не менше 5 символів";
+    }
+
+    const validate = (values) => {
+      const errors = {};
+      if (!values.todo || values.todo.length < 5) {
+        errors.todo = "Введіть не менше 5 символів";
+      }
+      return errors;
+    };
+
+  const removeTodo = (index) => {
+    setTodos(todos.filter((_, i) => i !== index));
+  };
+
+  return (
+    <div className="todo-section">
+      <Form
+        onSubmit={onSubmit}
+        validate={validate}
+        render={({ handleSubmit, form, submitting, pristine, errors }) => (
+          <form onSubmit={handleSubmit}>
+            <Field name="todo">
+              {({ input, meta }) => (
+                <div>
+                  <input {...input} placeholder="Введіть завдання" />
+                  {meta.error && meta.touched && <span>{meta.error}</span>}
+                </div>
+              )}
+            </Field>
+            <button type="submit" disabled={submitting || pristine}>
+              Додати
+            </button>
+          </form>
+        )}
+      />
+      <div className="todos">
+        {todos.map((todo, index) => (
+          <div key={index} className="todo-item">
+            <input type="checkbox" /> {todo}
+            <button onClick={() => setTodos(todos.filter((_, i) => i !== index))}>
+              Видалити
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+
+function FormikTodo() {
+  const [todos, setTodos] = useState([]);
+
+  const validate = (values) => {
+    const errors = {};
+    if (!values.todo || values.todo.length < 5) {
+      errors.todo = "Введіть не менше 5 символів";
+    }
+    return errors;
+  };
+
+  const removeTodo = (index) => {
+    setTodos(todos.filter((_, i) => i !== index));
+  };
+
+  return (
+    <div className="todo-section">
+      <Formik
+        initialValues={{ todo: "" }}
+        validate={validate}
+        onSubmit={(values, { resetForm }) => {
+          setTodos([...todos, values.todo]);
+          resetForm();
+        }}
+      >
+        {() => (
+          <Form>
+            <Field name="todo" placeholder="Введіть завдання" />
+            <button type="submit">Додати</button>
+            <ErrorMessage name="todo" component="div" className="error" />
+          </Form>
+        )}
+      </Formik>
+      <div className="todos">
+        {todos.map((todo, index) => (
+          <div key={index} className="todo-item">
+            <input type="checkbox" /> {todo}
+            <button onClick={() => removeTodo(index)}>Видалити</button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+}
+
