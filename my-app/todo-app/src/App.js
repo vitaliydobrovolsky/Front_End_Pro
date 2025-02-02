@@ -1,46 +1,56 @@
-import React, { useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import "./App.css";
+import React from "react";
+import { Provider, useDispatch, useSelector } from "react-redux";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-const validate = (values) => {
-  const errors = {};
-  if (!values.task) {
-    errors.task = "Обов'язкове поле";
-  } else if (values.task.length < 5) {
-    errors.task = "Мінімальна довжина - 5 символів";
-  }
-  return errors;
-};
+// Redux slice
+const counterSlice = createSlice({
+  name: "counter",
+  initialState: 0,
+  reducers: {
+    increment: (state) => state + 1,
+    decrement: (state) => state - 1,
+  },
+});
 
-const TodoList = () => {
-  const [tasks, setTasks] = useState([]);
+const { increment, decrement } = counterSlice.actions;
+
+const store = configureStore({
+  reducer: {
+    counter: counterSlice.reducer,
+  },
+});
+
+// Counter component
+const Counter = () => {
+  const dispatch = useDispatch();
+  const count = useSelector((state) => state.counter);
 
   return (
-    <div className="todo-container">
-      <h2>TODO List</h2>
-      <Formik
-        initialValues={{ task: "" }}
-        validate={validate}
-        onSubmit={(values, { resetForm }) => {
-          setTasks([...tasks, values.task]);
-          resetForm();
-        }}
-      >
-        {({ isSubmitting }) => (
-          <Form className="todo-form">
-            <Field type="text" name="task" placeholder="Введіть задачу" />
-            <ErrorMessage name="task" component="div" className="error" />
-            <button type="submit" disabled={isSubmitting}>Додати</button>
-          </Form>
-        )}
-      </Formik>
-      <ul>
-        {tasks.map((task, index) => (
-          <li key={index}>{task}</li>
-        ))}
-      </ul>
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      <h1 className="text-2xl font-bold mb-4">Value: {count}</h1>
+      <div className="flex gap-2">
+        <button
+          className="px-4 py-2 bg-gray-200 rounded shadow"
+          onClick={() => dispatch(increment())}
+        >
+          +
+        </button>
+        <button
+          className="px-4 py-2 bg-gray-200 rounded shadow"
+          onClick={() => dispatch(decrement())}
+        >
+          -
+        </button>
+      </div>
     </div>
   );
 };
 
-export default TodoList;
+// App entry point
+const App = () => (
+  <Provider store={store}>
+    <Counter />
+  </Provider>
+);
+
+export default App;
