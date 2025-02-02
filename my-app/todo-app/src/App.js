@@ -2,7 +2,6 @@ import React from "react";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-// Redux slice
 const counterSlice = createSlice({
   name: "counter",
   initialState: 0,
@@ -20,7 +19,7 @@ const store = configureStore({
   },
 });
 
-// Counter component
+
 const Counter = () => {
   const dispatch = useDispatch();
   const count = useSelector((state) => state.counter);
@@ -46,7 +45,7 @@ const Counter = () => {
   );
 };
 
-// App entry point
+
 const App = () => (
   <Provider store={store}>
     <Counter />
