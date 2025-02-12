@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, fetchTodos, deleteTodo, toggleTodo, editTodo, clearTodos } from "./todoSlice";
+import { 
+    addTodoRequest, 
+    fetchTodosRequest, 
+    removeTodo, 
+    toggleTodo, 
+    editTodo, 
+    clearTodos 
+  } from "../store/todoSlice";
 
 const TodoList = () => {
   const dispatch = useDispatch();
@@ -10,12 +17,12 @@ const TodoList = () => {
   const [editText, setEditText] = useState("");
 
   useEffect(() => {
-    dispatch(fetchTodos());
+    dispatch(fetchTodosRequest()); 
   }, [dispatch]);
 
   const handleAdd = () => {
     if (newTodo.trim()) {
-      dispatch(addTodo(newTodo));
+        dispatch(addTodoRequest(newTodo));
       setNewTodo("");
     }
   };
@@ -56,7 +63,7 @@ const TodoList = () => {
                   {todo.completed ? "Undo" : "Complete"}
                 </button>
                 <button onClick={() => handleEdit(todo.id, todo.text)}>Edit</button>
-                <button onClick={() => dispatch(deleteTodo(todo.id))}>Delete</button>
+                <button onClick={() => dispatch(removeTodo(todo.id))}>Delete</button>
               </>
             )}
           </li>

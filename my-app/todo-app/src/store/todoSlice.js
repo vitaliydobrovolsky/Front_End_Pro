@@ -1,44 +1,49 @@
-import { createSlice } from '@reduxjs/toolkit';
-
-const initialState = {
-  todos: [],
-  loading: false,
-  error: null,
-};
+import { createSlice } from "@reduxjs/toolkit";
 
 const todoSlice = createSlice({
-  name: 'todos',
-  initialState,
+  name: "todos",
+  initialState: {
+    items: [],
+    loading: false,
+    error: null,
+  },
   reducers: {
     fetchTodosRequest: (state) => {
       state.loading = true;
     },
     fetchTodosSuccess: (state, action) => {
       state.loading = false;
-      state.todos = action.payload;
+      state.items = action.payload;
     },
     fetchTodosFailure: (state, action) => {
       state.loading = false;
       state.error = action.payload;
     },
-    addTodoRequest: (state, action) => {},
+    addTodoRequest: (state, action) => {
+      state.loading = true;
+    },
     addTodoSuccess: (state, action) => {
-      state.todos.push(action.payload);
+      state.loading = false;
+      state.items.push(action.payload);
     },
     removeTodo: (state, action) => {
-      state.todos = state.todos.filter(todo => todo.id !== action.payload);
+      state.items = state.items.filter((todo) => todo.id !== action.payload);
     },
     toggleTodo: (state, action) => {
-      const todo = state.todos.find(todo => todo.id === action.payload);
-      if (todo) todo.completed = !todo.completed;
+      const todo = state.items.find((todo) => todo.id === action.payload);
+      if (todo) {
+        todo.completed = !todo.completed;
+      }
     },
     editTodo: (state, action) => {
       const { id, text } = action.payload;
-      const todo = state.todos.find(todo => todo.id === id);
-      if (todo) todo.text = text;
+      const todo = state.items.find((todo) => todo.id === id);
+      if (todo) {
+        todo.text = text;
+      }
     },
     clearTodos: (state) => {
-      state.todos = [];
+      state.items = [];
     },
   },
 });

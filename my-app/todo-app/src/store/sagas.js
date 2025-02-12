@@ -1,5 +1,5 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
-import { fetchTodosRequest, fetchTodosSuccess, fetchTodosFailure, addTodoRequest, addTodoSuccess } from './slices/todoSlice';
+import { fetchTodosRequest, fetchTodosSuccess, fetchTodosFailure, addTodoRequest, addTodoSuccess } from './todoSlice';
 
 function* fetchTodosSaga() {
   try {
