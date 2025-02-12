@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Resume from './components/Resume';
+import TodoList from './components/TodoList';
+import Swapi from './components/Swapi';
+import { Container } from '@mui/material';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <Container sx={{ marginTop: 3 }}>
+        <Routes>
+          <Route path="/" element={<Resume />} />
+          <Route path="/todo" element={<TodoList />} />
+          <Route path="/swapi" element={<Swapi />} />
+        </Routes>
+      </Container>
+      <Footer />
+    </Router>
   );
-}
+};
 
 export default App;
