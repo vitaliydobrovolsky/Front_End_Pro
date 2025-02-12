@@ -1,4 +1,4 @@
-// src/components/Swapi.js
+
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, List, ListItem, Container, MenuItem, Select, FormControl, InputLabel } from '@mui/material';
 
@@ -7,7 +7,7 @@ const Swapi = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Функція для отримання даних із SWAPI
+  
   const fetchData = async (category) => {
     setLoading(true);
     try {
@@ -22,7 +22,7 @@ const Swapi = () => {
   };
 
   useEffect(() => {
-    fetchData(category); // Завжди отримуємо дані при зміні категорії
+    fetchData(category); 
   }, [category]);
 
   return (
@@ -30,7 +30,7 @@ const Swapi = () => {
       <Container>
         <Typography variant="h4">SWAPI</Typography>
         
-        {/* Меню для вибору категорії */}
+        {}
         <FormControl fullWidth sx={{ marginTop: 2 }}>
           <InputLabel>Виберіть категорію</InputLabel>
           <Select
@@ -47,7 +47,7 @@ const Swapi = () => {
           </Select>
         </FormControl>
 
-        {/* Виведення даних */}
+        {}
         {loading ? (
           <Typography variant="h6" sx={{ marginTop: 2 }}>Завантаження...</Typography>
         ) : (
