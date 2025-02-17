@@ -7,7 +7,7 @@ import {
     toggleTodo, 
     editTodo, 
     clearTodos 
-  } from "../store/todoSlice";
+} from "../store/todoSlice";
 
 const TodoList = () => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const TodoList = () => {
 
   const handleAdd = () => {
     if (newTodo.trim()) {
-        dispatch(addTodoRequest(newTodo));
+      dispatch(addTodoRequest({ text: newTodo }));
       setNewTodo("");
     }
   };
@@ -41,34 +41,71 @@ const TodoList = () => {
   };
 
   return (
-    <div>
+    <div style={{ maxWidth: "400px", margin: "20px auto", textAlign: "center" }}>
       <h1>Todo List</h1>
-      <input value={newTodo} onChange={(e) => setNewTodo(e.target.value)} placeholder="New task" />
-      <button onClick={handleAdd}>Add</button>
-      <button onClick={() => dispatch(clearTodos())}>Clear All</button>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>
-            {editId === todo.id ? (
-              <>
-                <input value={editText} onChange={(e) => setEditText(e.target.value)} />
-                <button onClick={handleSaveEdit}>Save</button>
-              </>
-            ) : (
-              <>
-                <span style={{ textDecoration: todo.completed ? "line-through" : "none" }}>
-                  {todo.text}
-                </span>
-                <button onClick={() => dispatch(toggleTodo(todo.id))}>
-                  {todo.completed ? "Undo" : "Complete"}
-                </button>
-                <button onClick={() => handleEdit(todo.id, todo.text)}>Edit</button>
-                <button onClick={() => dispatch(removeTodo(todo.id))}>Delete</button>
-              </>
-            )}
-          </li>
-        ))}
-      </ul>
+      <div style={{ display: "flex", gap: "10px", marginBottom: "10px" }}>
+        <input
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
+          placeholder="New task"
+          style={{ flex: 1, padding: "5px" }}
+        />
+        <button onClick={handleAdd}>Add</button>
+        <button onClick={() => dispatch(clearTodos())}>Clear All</button>
+      </div>
+
+      {todos.length > 0 ? (
+        <ul style={{ listStyle: "none", padding: 0 }}>
+          {todos.map((todo) => (
+            <li
+              key={todo.id}
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginBottom: "5px",
+                padding: "5px",
+                border: "1px solid #ccc",
+                borderRadius: "5px",
+                backgroundColor: "#f9f9f9",
+              }}
+            >
+              {editId === todo.id ? (
+                <>
+                  <input
+                    value={editText}
+                    onChange={(e) => setEditText(e.target.value)}
+                    style={{ flex: 1 }}
+                  />
+                  <button onClick={handleSaveEdit}>Save</button>
+                </>
+              ) : (
+                <>
+                  <span
+                    style={{ 
+                      textDecoration: todo.completed ? "line-through" : "none", 
+                      flex: 1, 
+                      textAlign: "left",
+                      paddingLeft: "5px"
+                    }}
+                  >
+                    {todo.text}
+                  </span>
+                  <div style={{ display: "flex", gap: "5px" }}>
+                    <button onClick={() => dispatch(toggleTodo(todo.id))}>
+                      {todo.completed ? "Undo" : "Complete"}
+                    </button>
+                    <button onClick={() => handleEdit(todo.id, todo.text)}>Edit</button>
+                    <button onClick={() => dispatch(removeTodo(todo.id))}>Delete</button>
+                  </div>
+                </>
+              )}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No tasks available</p>
+      )}
     </div>
   );
 };
